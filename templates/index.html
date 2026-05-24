@@ -330,6 +330,11 @@
         const RECENT_KEY = "rosman_recent_paths";
         const MAX_RECENT = 5;
 
+        function escHtml(str) {
+            return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+                      .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+        }
+
         function loadRecentPaths() {
             return JSON.parse(localStorage.getItem(RECENT_KEY) || "[]");
         }
@@ -343,11 +348,15 @@
         function renderRecentPaths() {
             const paths = loadRecentPaths();
             const container = document.getElementById("recent_paths");
-            if (!paths.length) { container.innerHTML = ""; return; }
-            container.innerHTML = paths.map(p => `
-                <button class="recent-chip" title="${p}" onclick="selectRecentPath('${p.replace(/'/g, "\\'")}')">
-                    ${p}
-                </button>`).join("");
+            container.innerHTML = "";
+            paths.forEach(p => {
+                const btn = document.createElement("button");
+                btn.className = "recent-chip";
+                btn.title = p;
+                btn.textContent = p;
+                btn.addEventListener("click", () => selectRecentPath(p));
+                container.appendChild(btn);
+            });
         }
 
         function selectRecentPath(path) {
@@ -395,8 +404,8 @@
                 nodes.map(node => `
                 <tr>
                     <td class="status-cell"><span class="status-dot"></span></td>
-                    <td><input class="pkg" value="${pkg}" readonly></td>
-                    <td><input class="node" value="${node}"></td>
+                    <td><input class="pkg" value="${escHtml(pkg)}" readonly></td>
+                    <td><input class="node" value="${escHtml(node)}"></td>
                     <td>
                         <div class="actions-cell">
                             <button class="btn btn-start btn-sm" onclick="startNode(this.closest('tr'))">▶ Start</button>
@@ -419,11 +428,25 @@
         async function startNode(row) {
             const pkg  = row.querySelector(".pkg").value;
             const node = row.querySelector(".node").value;
-            const res  = await fetch(`/start?package_name=${pkg}&node_name=${node}`, { method: "POST" });
+            let res;
+            try {
+                res = await fetch(`/start?package_name=${encodeURIComponent(pkg)}&node_name=${encodeURIComponent(node)}`, { method: "POST" });
+            } catch {
+                alert("Network error: could not reach the server.");
+                return;
+            }
             if (res.status === 403) {
                 const data = await res.json();
                 document.getElementById("limit_count").textContent = data.max;
                 document.getElementById("limit_banner").style.display = "block";
+                return;
+            }
+            if (res.status === 400) {
+                alert("Workspace not sourced. Please source a setup file first.");
+                return;
+            }
+            if (!res.ok) {
+                alert(`Failed to start node (${res.status}).`);
                 return;
             }
             document.getElementById("limit_banner").style.display = "none";
@@ -433,7 +456,17 @@
         async function stopNode(row) {
             const pkg  = row.querySelector(".pkg").value;
             const node = row.querySelector(".node").value;
-            await fetch(`/stop?package_name=${pkg}&node_name=${node}`, { method: "POST" });
+            let res;
+            try {
+                res = await fetch(`/stop?package_name=${encodeURIComponent(pkg)}&node_name=${encodeURIComponent(node)}`, { method: "POST" });
+            } catch {
+                alert("Network error: could not reach the server.");
+                return;
+            }
+            if (!res.ok) {
+                alert(`Failed to stop node (${res.status}).`);
+                return;
+            }
             row.className = "stopped";
         }
 

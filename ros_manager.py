@@ -2,13 +2,14 @@ from ros2pkg.api import get_executable_paths
 from ament_index_python.packages import get_packages_with_prefixes
 
 import asyncio
+import logging
 import os
 import pty
+import shlex
 import signal
 import subprocess
 import threading
 from collections import deque
-import logging
 
 logging.basicConfig(
      encoding="utf-8",
@@ -46,7 +47,7 @@ def source_ws(setup_path):
     try:
         minimal_env = {k: os.environ[k] for k in ("HOME", "USER", "PATH") if k in os.environ}
         result = subprocess.run(
-            ["bash", "--norc", "--noprofile", "-c", f"source {setup_path} && env"],
+            ["bash", "--norc", "--noprofile", "-c", f"source {shlex.quote(setup_path)} && env"],
             capture_output=True, text=True,
             env=minimal_env
         )
@@ -59,8 +60,7 @@ def source_ws(setup_path):
         SETUP_PATH = setup_path
         return True
     except Exception as e:
-        print(e)
-        logging.error("Cannot source the bash file.")
+        logging.error("Cannot source the bash file: %s", e)
         return False
     
 def get_packages_list(setup_path):
@@ -76,10 +76,12 @@ def get_packages_list(setup_path):
     
 def start_node(package_name: str, node_name: str):
     node_key = f"{package_name}/{node_name}"
+    if SETUP_PATH is None:
+        return "not_sourced"
     if node_key in RUNNING_NODES:
         return "already_running"
     cmd = ["bash", "--norc", "--noprofile", "-c",
-           f"source {SETUP_PATH} && ros2 run {package_name} {node_name}"]
+           f"source {shlex.quote(SETUP_PATH)} && ros2 run {shlex.quote(package_name)} {shlex.quote(node_name)}"]
     master_fd, slave_fd = pty.openpty()
     process = subprocess.Popen(
         cmd,
@@ -89,14 +91,10 @@ def start_node(package_name: str, node_name: str):
     )
     os.close(slave_fd)
     NODE_LOGS[node_key] = deque(maxlen=200)
-    loop = asyncio.get_event_loop()
+    loop = asyncio.get_running_loop()
     threading.Thread(target=_collect_logs, args=(node_key, master_fd, loop), daemon=True).start()
     RUNNING_NODES[node_key] = (process, master_fd)
-    print(f"Started node: {node_key}")
-
-def show_node_logs(package_name: str, node_name: str):
-    node_key = f"{package_name}/{node_name}"
-    return list(NODE_LOGS.get(node_key, []))
+    logging.info("Started node: %s", node_key)
 
 def stop_node(package_name: str, node_name: str):
     node_key = f"{package_name}/{node_name}"
@@ -104,9 +102,12 @@ def stop_node(package_name: str, node_name: str):
     if entry is None:
         return
     process, master_fd = entry
-    os.killpg(os.getpgid(process.pid), signal.SIGTERM)
+    try:
+        os.killpg(os.getpgid(process.pid), signal.SIGTERM)
+    except ProcessLookupError:
+        pass
     try:
         os.close(master_fd)
     except OSError:
         pass
-    print(f"Stopped node: {node_key}")
+    logging.info("Stopped node: %s", node_key)

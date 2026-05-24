@@ -1,14 +1,37 @@
 from contextlib import asynccontextmanager
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse, StreamingResponse
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.responses import Response
 
-from ros_manager import *
+from ros_manager import (
+    RUNNING_NODES,
+    NODE_LOGS,
+    NODE_LOG_QUEUES,
+    source_ws,
+    get_packages_list,
+    start_node,
+    stop_node,
+)
 
 import asyncio
 import os
 import subprocess
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+_SAFE_ORIGINS = {"http://localhost", "http://127.0.0.1"}
+_MUTATING_METHODS = {"POST", "PUT", "PATCH", "DELETE"}
+
+class CSRFMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        if request.method in _MUTATING_METHODS:
+            origin = request.headers.get("origin", "")
+            # strip port before checking host
+            host_only = origin.rsplit(":", 1)[0] if ":" in origin[7:] else origin
+            if origin and host_only not in _SAFE_ORIGINS:
+                return Response("Cross-origin requests not allowed", status_code=403)
+        return await call_next(request)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -18,6 +41,7 @@ async def lifespan(app: FastAPI):
         stop_node(pkg, node)
 
 app = FastAPI(lifespan=lifespan)
+app.add_middleware(CSRFMiddleware)
 
 @app.get("/browse")
 async def browse_file():
@@ -33,15 +57,18 @@ async def browse_file():
 @app.post("/source")
 async def source_and_get_packages(setup_path:str):
     try:
-        return {"error": not source_ws(setup_path),
-                "packages": get_packages_list(setup_path)
-                }
-    except:
-        return False
+        ok = source_ws(setup_path)
+        if not ok:
+            return {"error": True, "packages": {}}
+        return {"error": False, "packages": get_packages_list(setup_path)}
+    except Exception:
+        raise HTTPException(status_code=500, detail="Failed to source workspace")
 
 @app.post("/start")
 async def start(package_name: str, node_name: str):
-    start_node(package_name, node_name)
+    result = start_node(package_name, node_name)
+    if result == "not_sourced":
+        raise HTTPException(status_code=400, detail="Workspace not sourced")
 
 @app.post("/stop")
 async def stop(package_name:str, node_name:str):
