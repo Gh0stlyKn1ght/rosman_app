@@ -40,11 +40,7 @@
             align-items: center;
             justify-content: space-between;
         }
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .brand { display: flex; align-items: center; gap: 12px; }
         .brand-logo {
             width: 32px; height: 32px;
             background: linear-gradient(135deg, var(--accent), var(--accent-dim));
@@ -57,14 +53,11 @@
         .brand-sub  { font-size: 10px; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
 
         #source_status {
-            font-size: 12px;
-            padding: 4px 12px;
-            border-radius: 99px;
-            font-style: normal;
-            transition: all 0.2s;
+            font-size: 12px; padding: 4px 12px;
+            border-radius: 99px; font-style: normal; transition: all 0.2s;
         }
-        #source_status.ok  { background: rgba(34,197,94,.12); color: var(--green); border: 1px solid rgba(34,197,94,.3); }
-        #source_status.err { background: rgba(239,68,68,.12); color: var(--red);   border: 1px solid rgba(239,68,68,.3); }
+        #source_status.ok      { background: rgba(34,197,94,.12);  color: var(--green); border: 1px solid rgba(34,197,94,.3); }
+        #source_status.err     { background: rgba(239,68,68,.12);   color: var(--red);   border: 1px solid rgba(239,68,68,.3); }
         #source_status.loading { color: var(--text-muted); border: 1px solid var(--border); }
 
         /* ── Content ─────────────────────────────────── */
@@ -72,35 +65,20 @@
 
         /* ── Card ────────────────────────────────────── */
         .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 18px 20px;
-            margin-bottom: 20px;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 10px; padding: 18px 20px; margin-bottom: 20px;
         }
         .card-label {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-muted);
-            margin-bottom: 12px;
+            font-size: 10px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 12px;
         }
 
         .recent-chip {
-            font-family: var(--mono);
-            font-size: 11px;
-            padding: 3px 10px;
-            border-radius: 99px;
-            background: var(--surface-3);
-            color: var(--text-muted);
-            border: 1px solid var(--border);
-            cursor: pointer;
-            transition: color 0.15s, border-color 0.15s;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 420px;
+            font-family: var(--mono); font-size: 11px; padding: 3px 10px;
+            border-radius: 99px; background: var(--surface-3);
+            color: var(--text-muted); border: 1px solid var(--border);
+            cursor: pointer; transition: color 0.15s, border-color 0.15s;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 420px;
         }
         .recent-chip:hover { color: var(--accent); border-color: var(--accent); }
 
@@ -108,36 +86,26 @@
         .setup-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .path-input {
             flex: 1; min-width: 280px; max-width: 540px;
-            background: var(--bg);
-            color: var(--text);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 8px 12px;
-            font-family: var(--mono);
-            font-size: 12px;
-            outline: none;
-            transition: border-color 0.15s;
+            background: var(--bg); color: var(--text);
+            border: 1px solid var(--border); border-radius: 6px;
+            padding: 8px 12px; font-family: var(--mono); font-size: 12px;
+            outline: none; transition: border-color 0.15s;
         }
-        .path-input:focus   { border-color: var(--accent); }
+        .path-input:focus { border-color: var(--accent); }
         .path-input::placeholder { color: var(--text-muted); }
 
         /* ── Buttons ─────────────────────────────────── */
         .btn {
-            border: none;
-            border-radius: 6px;
-            padding: 8px 16px;
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
+            border: none; border-radius: 6px; padding: 8px 16px;
+            font-size: 13px; font-weight: 500; cursor: pointer;
             transition: filter 0.15s, background 0.15s;
-            white-space: nowrap;
-            display: inline-flex; align-items: center; gap: 5px;
+            white-space: nowrap; display: inline-flex; align-items: center; gap: 5px;
         }
-        .btn:hover { filter: brightness(1.15); }
+        .btn:hover  { filter: brightness(1.15); }
         .btn:active { filter: brightness(0.9); }
 
-        .btn-primary { background: var(--accent);     color: #000; }
-        .btn-ghost   { background: var(--surface-2);  color: var(--text); border: 1px solid var(--border); }
+        .btn-primary { background: var(--accent);    color: #000; }
+        .btn-ghost   { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
         .btn-ghost:hover { background: var(--surface-3); filter: none; }
         .btn-start   { background: rgba(34,197,94,.15);  color: var(--green); border: 1px solid rgba(34,197,94,.25); }
         .btn-start:hover { background: rgba(34,197,94,.28); filter: none; }
@@ -145,7 +113,23 @@
         .btn-stop:hover  { background: rgba(239,68,68,.28); filter: none; }
         .btn-logs    { background: var(--surface-3); color: var(--text-muted); border: 1px solid var(--border); }
         .btn-logs:hover  { color: var(--text); background: var(--surface-2); filter: none; }
+        .btn-params  { background: var(--surface-3); color: var(--text-muted); border: 1px solid var(--border); }
+        .btn-params:hover { color: var(--accent); border-color: var(--accent); background: var(--surface-2); filter: none; }
         .btn-sm { padding: 5px 11px; font-size: 12px; }
+
+        /* ── Tabs ────────────────────────────────────── */
+        .tab-bar {
+            display: flex; gap: 2px; margin-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .tab-btn {
+            background: none; border: none; border-bottom: 2px solid transparent;
+            color: var(--text-muted); font-size: 13px; font-weight: 500;
+            padding: 8px 18px; cursor: pointer;
+            transition: color 0.15s, border-color 0.15s; margin-bottom: -1px;
+        }
+        .tab-btn:hover { color: var(--text); }
+        .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
 
         /* ── Toolbar ─────────────────────────────────── */
         .toolbar {
@@ -153,13 +137,10 @@
             margin-bottom: 10px;
         }
         .search-input {
-            background: var(--surface);
-            color: var(--text);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 7px 12px;
-            font-size: 13px; width: 260px; outline: none;
-            transition: border-color 0.15s;
+            background: var(--surface); color: var(--text);
+            border: 1px solid var(--border); border-radius: 6px;
+            padding: 7px 12px; font-size: 13px; width: 260px;
+            outline: none; transition: border-color 0.15s;
         }
         .search-input:focus { border-color: var(--accent); }
         .search-input::placeholder { color: var(--text-muted); }
@@ -168,49 +149,33 @@
 
         /* ── Table ───────────────────────────────────── */
         .node-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            overflow: hidden;
+            width: 100%; border-collapse: collapse;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 10px; overflow: hidden;
         }
         .node-table thead th {
-            background: var(--surface-2);
-            padding: 10px 16px;
-            text-align: left;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.09em;
-            color: var(--text-muted);
+            background: var(--surface-2); padding: 10px 16px; text-align: left;
+            font-size: 10px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.09em; color: var(--text-muted);
             border-bottom: 1px solid var(--border);
         }
         .node-table td {
-            padding: 9px 16px;
-            border-bottom: 1px solid var(--border-dim);
+            padding: 9px 16px; border-bottom: 1px solid var(--border-dim);
             vertical-align: middle;
         }
         .node-table tbody tr:last-child td { border-bottom: none; }
         .node-table tbody tr:hover td { background: rgba(0,180,216,.04); }
 
         .node-table input {
-            background: transparent;
-            color: var(--text);
-            border: none;
-            font-family: var(--mono);
-            font-size: 12px;
-            width: 100%; outline: none;
+            background: transparent; color: var(--text); border: none;
+            font-family: var(--mono); font-size: 12px; width: 100%; outline: none;
         }
         .node-table input[readonly] { color: var(--accent); cursor: default; }
 
         .status-cell { width: 28px; text-align: center; }
         .status-dot  {
-            width: 7px; height: 7px;
-            border-radius: 50%;
-            background: var(--border);
-            display: inline-block;
-            transition: background 0.3s, box-shadow 0.3s;
+            width: 7px; height: 7px; border-radius: 50%;
+            background: var(--border); display: inline-block; transition: background 0.3s, box-shadow 0.3s;
         }
         .running .status-dot { background: var(--green); box-shadow: 0 0 7px var(--green); }
         .stopped .status-dot { background: var(--red); }
@@ -230,20 +195,15 @@
             position: fixed; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             width: 92vw; max-width: 1120px; height: 440px;
-            background: #07101e;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            z-index: 1000;
-            box-shadow: 0 24px 80px rgba(0,0,0,.8);
-            overflow: hidden;
+            background: #07101e; border: 1px solid var(--border);
+            border-radius: 10px; z-index: 1000;
+            box-shadow: 0 24px 80px rgba(0,0,0,.8); overflow: hidden;
         }
         #log_modal.open { display: flex; }
         .modal-header {
             display: flex; align-items: center; justify-content: space-between;
-            padding: 10px 16px;
-            background: var(--surface-2);
-            border-bottom: 1px solid var(--border);
-            flex-shrink: 0;
+            padding: 10px 16px; background: var(--surface-2);
+            border-bottom: 1px solid var(--border); flex-shrink: 0;
         }
         .modal-title {
             font-family: var(--mono); font-size: 13px; color: var(--accent);
@@ -254,14 +214,58 @@
             background: var(--green); box-shadow: 0 0 6px var(--green);
             animation: pulse 2s infinite;
         }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
-        }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
         #terminal_container { flex: 1; overflow: hidden; padding: 4px; }
+
+        /* ── Param Modal ─────────────────────────────── */
+        #param_modal_backdrop {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,.55); z-index: 1001;
+            backdrop-filter: blur(2px);
+        }
+        #param_modal {
+            display: none; flex-direction: column;
+            position: fixed; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 640px; max-width: 95vw; max-height: 70vh;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 10px; z-index: 1002;
+            box-shadow: 0 24px 80px rgba(0,0,0,.8); overflow: hidden;
+        }
+        #param_modal.open { display: flex; }
+        .param-modal-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 10px 16px; background: var(--surface-2);
+            border-bottom: 1px solid var(--border); flex-shrink: 0;
+        }
+        .param-modal-body { overflow-y: auto; flex: 1; padding: 12px 16px; }
+        .param-row {
+            display: flex; align-items: center; gap: 8px;
+            padding: 6px 0; border-bottom: 1px solid var(--border-dim);
+        }
+        .param-row:last-child { border-bottom: none; }
+        .param-name {
+            font-family: var(--mono); font-size: 12px; color: var(--accent);
+            flex: 1; min-width: 0; overflow: hidden;
+            text-overflow: ellipsis; white-space: nowrap;
+        }
+        .param-value-input {
+            background: var(--bg); color: var(--text);
+            border: 1px solid var(--border); border-radius: 4px;
+            padding: 4px 8px; font-family: var(--mono); font-size: 12px;
+            width: 200px; outline: none; transition: border-color 0.15s;
+        }
+        .param-value-input:focus { border-color: var(--accent); }
+        .btn-param-set {
+            background: rgba(0,180,216,.15); color: var(--accent);
+            border: 1px solid rgba(0,180,216,.3);
+        }
+        .btn-param-set:hover { background: rgba(0,180,216,.28); filter: none; }
     </style>
 </head>
 <body>
 
+    <!-- Log modal -->
     <div id="modal_backdrop" onclick="closeLog()"></div>
     <div id="log_modal">
         <div class="modal-header">
@@ -272,6 +276,18 @@
             <button class="btn btn-ghost btn-sm" onclick="closeLog()">✕  Close</button>
         </div>
         <div id="terminal_container"></div>
+    </div>
+
+    <!-- Param modal -->
+    <div id="param_modal_backdrop" onclick="closeParams()"></div>
+    <div id="param_modal">
+        <div class="param-modal-header">
+            <div class="modal-title">
+                <span id="param_modal_title">Parameters</span>
+            </div>
+            <button class="btn btn-ghost btn-sm" onclick="closeParams()">✕  Close</button>
+        </div>
+        <div class="param-modal-body" id="param_modal_body"></div>
     </div>
 
     <header class="header">
@@ -290,12 +306,13 @@
             <div class="card-label">Workspace</div>
             <div class="setup-row">
                 <input id="setup_path" type="text" class="path-input"
-                       placeholder="/opt/ros/humble/setup.bash">
-                <button class="btn btn-ghost" onclick="browseFile()">Browse</button>
+                       placeholder="/opt/ros/jazzy/setup.bash">
+                <button id="browse_btn" class="btn btn-ghost" onclick="browseFile()">Browse</button>
                 <button class="btn btn-primary" onclick="sourceSetup()">Source</button>
             </div>
             <div id="recent_paths" style="margin-top:10px; display:flex; flex-wrap:wrap; gap:6px;"></div>
         </div>
+
         <span id="source_status" style="display:inline-block; margin-bottom:16px;"></span>
 
         <div id="limit_banner" style="display:none; margin-bottom:14px; padding:10px 16px;
@@ -306,23 +323,51 @@
                style="color:#00b4d8; margin-left:8px;">Contact us to upgrade →</a>
         </div>
 
-        <div class="toolbar">
-            <input class="search-input" id="search" placeholder="🔍  Filter packages…"
-                   oninput="filterRows()" disabled>
-            <span class="node-count" id="node_count"></span>
+        <!-- Tab bar -->
+        <div class="tab-bar">
+            <button class="tab-btn active" id="tab-nodes-btn"  onclick="switchTab('nodes')">Nodes</button>
+            <button class="tab-btn"        id="tab-launch-btn" onclick="switchTab('launch')">Launch Files</button>
         </div>
 
-        <table class="node-table">
-            <thead>
-                <tr>
-                    <th class="status-cell"></th>
-                    <th>Package</th>
-                    <th>Node / Executable</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="node_rows"></tbody>
-        </table>
+        <!-- Nodes tab -->
+        <div id="tab-nodes">
+            <div class="toolbar">
+                <input class="search-input" id="search" placeholder="🔍  Filter packages…"
+                       oninput="filterRows()" disabled>
+                <span class="node-count" id="node_count"></span>
+            </div>
+            <table class="node-table">
+                <thead>
+                    <tr>
+                        <th class="status-cell"></th>
+                        <th>Package</th>
+                        <th>Node / Executable</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="node_rows"></tbody>
+            </table>
+        </div>
+
+        <!-- Launch Files tab -->
+        <div id="tab-launch" style="display:none">
+            <div class="toolbar">
+                <input class="search-input" id="launch_search" placeholder="🔍  Filter launches…"
+                       oninput="filterLaunchRows()" disabled>
+                <span class="node-count" id="launch_count"></span>
+            </div>
+            <table class="node-table">
+                <thead>
+                    <tr>
+                        <th class="status-cell"></th>
+                        <th>Package</th>
+                        <th>Launch File</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="launch_rows"></tbody>
+            </table>
+        </div>
 
     </div>
 
@@ -335,9 +380,8 @@
                       .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
         }
 
-        function loadRecentPaths() {
-            return JSON.parse(localStorage.getItem(RECENT_KEY) || "[]");
-        }
+        // ── Recent paths ──────────────────────────────
+        function loadRecentPaths() { return JSON.parse(localStorage.getItem(RECENT_KEY) || "[]"); }
 
         function saveRecentPath(path) {
             const paths = [path, ...loadRecentPaths().filter(p => p !== path)].slice(0, MAX_RECENT);
@@ -346,33 +390,37 @@
         }
 
         function renderRecentPaths() {
-            const paths = loadRecentPaths();
             const container = document.getElementById("recent_paths");
             container.innerHTML = "";
-            paths.forEach(p => {
+            loadRecentPaths().forEach(p => {
                 const btn = document.createElement("button");
                 btn.className = "recent-chip";
                 btn.title = p;
                 btn.textContent = p;
-                btn.addEventListener("click", () => selectRecentPath(p));
+                btn.addEventListener("click", () => {
+                    document.getElementById("setup_path").value = p;
+                });
                 container.appendChild(btn);
             });
         }
 
-        function selectRecentPath(path) {
-            document.getElementById("setup_path").value = path;
-        }
-
+        // ── Browse ────────────────────────────────────
         async function browseFile() {
             const res  = await fetch("/browse");
             const data = await res.json();
+            if (data.error === "unavailable") return;
+            if (data.path) document.getElementById("setup_path").value = data.path;
+        }
+
+        async function initBrowseButton() {
+            const res  = await fetch("/browse");
+            const data = await res.json();
             if (data.error === "unavailable") {
-                alert("File browser unavailable in Docker — type the path directly.");
-            } else if (data.path) {
-                document.getElementById("setup_path").value = data.path;
+                document.getElementById("browse_btn").style.display = "none";
             }
         }
 
+        // ── Source workspace ──────────────────────────
         async function sourceSetup() {
             const path   = document.getElementById("setup_path").value.trim();
             const status = document.getElementById("source_status");
@@ -390,33 +438,35 @@
                 return;
             }
 
-            const count = Object.keys(data.packages).length;
+            const pkgCount = Object.keys(data.packages).length;
             status.className = "ok";
-            status.textContent = `✓  ${count} packages`;
+            status.textContent = `✓  ${pkgCount} packages`;
             saveRecentPath(path);
 
-            const search = document.getElementById("search");
-            search.disabled = false;
-            document.getElementById("node_count").textContent = `${count} packages`;
+            // Populate nodes tab
+            document.getElementById("search").disabled = false;
+            document.getElementById("node_count").textContent = `${pkgCount} packages`;
 
             const sorted = Object.entries(data.packages).sort(([a], [b]) => a.localeCompare(b));
             document.getElementById("node_rows").innerHTML = sorted.flatMap(([pkg, nodes]) =>
                 nodes.map(node => `
                 <tr>
                     <td class="status-cell"><span class="status-dot"></span></td>
-                    <td><input class="pkg" value="${escHtml(pkg)}" readonly></td>
+                    <td><input class="pkg"  value="${escHtml(pkg)}"  readonly></td>
                     <td><input class="node" value="${escHtml(node)}"></td>
                     <td>
                         <div class="actions-cell">
-                            <button class="btn btn-start btn-sm" onclick="startNode(this.closest('tr'))">▶ Start</button>
-                            <button class="btn btn-stop  btn-sm" onclick="stopNode(this.closest('tr'))">■ Stop</button>
-                            <button class="btn btn-logs  btn-sm" onclick="showLogs(this.closest('tr'))">≡ Logs</button>
+                            <button class="btn btn-start  btn-sm" onclick="startNode(this.closest('tr'))">▶ Start</button>
+                            <button class="btn btn-stop   btn-sm" onclick="stopNode(this.closest('tr'))">■ Stop</button>
+                            <button class="btn btn-logs   btn-sm" onclick="showLogs(this.closest('tr'))">≡ Logs</button>
+                            <button class="btn btn-params btn-sm" onclick="showParams(this.closest('tr'))">⚙ Params</button>
                         </div>
                     </td>
                 </tr>`)
             ).join("");
 
-            const statusRes = await fetch("/status");
+            // Mark already-running nodes
+            const statusRes  = await fetch("/status");
             const statusData = await statusRes.json();
             const runningSet = new Set(statusData.running);
             document.querySelectorAll("#node_rows tr").forEach(row => {
@@ -424,7 +474,22 @@
                 const node = row.querySelector(".node").value;
                 if (runningSet.has(`${pkg}/${node}`)) row.className = "running";
             });
+
+            // Populate launch tab
+            const launchStatusRes  = await fetch("/launch/status");
+            const launchStatusData = await launchStatusRes.json();
+            populateLaunchRows(data.launch_files || {}, new Set(launchStatusData.running));
         }
+
+        // ── Tabs ──────────────────────────────────────
+        function switchTab(name) {
+            document.getElementById("tab-nodes").style.display  = name === "nodes"  ? "" : "none";
+            document.getElementById("tab-launch").style.display = name === "launch" ? "" : "none";
+            document.getElementById("tab-nodes-btn").classList.toggle("active",  name === "nodes");
+            document.getElementById("tab-launch-btn").classList.toggle("active", name === "launch");
+        }
+
+        // ── Node start / stop ─────────────────────────
         async function startNode(row) {
             const pkg  = row.querySelector(".pkg").value;
             const node = row.querySelector(".node").value;
@@ -432,8 +497,7 @@
             try {
                 res = await fetch(`/start?package_name=${encodeURIComponent(pkg)}&node_name=${encodeURIComponent(node)}`, { method: "POST" });
             } catch {
-                alert("Network error: could not reach the server.");
-                return;
+                alert("Network error: could not reach the server."); return;
             }
             if (res.status === 403) {
                 const data = await res.json();
@@ -441,14 +505,9 @@
                 document.getElementById("limit_banner").style.display = "block";
                 return;
             }
-            if (res.status === 400) {
-                alert("Workspace not sourced. Please source a setup file first.");
-                return;
-            }
-            if (!res.ok) {
-                alert(`Failed to start node (${res.status}).`);
-                return;
-            }
+            if (res.status === 400) { alert("Workspace not sourced. Please source a setup file first."); return; }
+            if (res.status === 409) { row.className = "running"; return; }
+            if (!res.ok) { alert(`Failed to start node (${res.status}).`); return; }
             document.getElementById("limit_banner").style.display = "none";
             row.className = "running";
         }
@@ -460,13 +519,9 @@
             try {
                 res = await fetch(`/stop?package_name=${encodeURIComponent(pkg)}&node_name=${encodeURIComponent(node)}`, { method: "POST" });
             } catch {
-                alert("Network error: could not reach the server.");
-                return;
+                alert("Network error: could not reach the server."); return;
             }
-            if (!res.ok) {
-                alert(`Failed to stop node (${res.status}).`);
-                return;
-            }
+            if (!res.ok) { alert(`Failed to stop node (${res.status}).`); return; }
             row.className = "stopped";
         }
 
@@ -480,19 +535,91 @@
                 row.style.display = show ? "" : "none";
                 if (show) visible++;
             });
+            const total = document.querySelectorAll("#node_rows tr").length;
             document.getElementById("node_count").textContent =
-                q ? `${visible} of ${document.querySelectorAll("#node_rows tr").length} packages` :
-                    `${document.querySelectorAll("#node_rows tr").length} packages`;
+                q ? `${visible} of ${total} packages` : `${total} packages`;
         }
 
+        // ── Launch file table ─────────────────────────
+        function populateLaunchRows(launchFiles, runningLaunchSet) {
+            const sorted = Object.entries(launchFiles).sort(([a], [b]) => a.localeCompare(b));
+            document.getElementById("launch_rows").innerHTML = sorted.flatMap(([pkg, files]) =>
+                files.map(file => `
+                <tr>
+                    <td class="status-cell"><span class="status-dot"></span></td>
+                    <td><input class="lpkg"  value="${escHtml(pkg)}"  readonly></td>
+                    <td><input class="lfile" value="${escHtml(file)}" readonly></td>
+                    <td>
+                        <div class="actions-cell">
+                            <button class="btn btn-start btn-sm" onclick="startLaunch(this.closest('tr'))">▶ Start</button>
+                            <button class="btn btn-stop  btn-sm" onclick="stopLaunch(this.closest('tr'))">■ Stop</button>
+                            <button class="btn btn-logs  btn-sm" onclick="showLaunchLogs(this.closest('tr'))">≡ Logs</button>
+                        </div>
+                    </td>
+                </tr>`)
+            ).join("");
+
+            document.querySelectorAll("#launch_rows tr").forEach(row => {
+                const pkg  = row.querySelector(".lpkg").value;
+                const file = row.querySelector(".lfile").value;
+                if (runningLaunchSet.has(`${pkg}/${file}`)) row.className = "running";
+            });
+
+            const count = document.querySelectorAll("#launch_rows tr").length;
+            document.getElementById("launch_count").textContent = `${count} launch files`;
+            document.getElementById("launch_search").disabled = count === 0;
+        }
+
+        async function startLaunch(row) {
+            const pkg  = row.querySelector(".lpkg").value;
+            const file = row.querySelector(".lfile").value;
+            let res;
+            try {
+                res = await fetch(`/launch/start?package_name=${encodeURIComponent(pkg)}&launch_file=${encodeURIComponent(file)}`, { method: "POST" });
+            } catch {
+                alert("Network error: could not reach the server."); return;
+            }
+            if (res.status === 400) { alert("Workspace not sourced."); return; }
+            if (res.status === 409) { row.className = "running"; return; }
+            if (!res.ok) { alert(`Failed to start launch (${res.status}).`); return; }
+            row.className = "running";
+        }
+
+        async function stopLaunch(row) {
+            const pkg  = row.querySelector(".lpkg").value;
+            const file = row.querySelector(".lfile").value;
+            let res;
+            try {
+                res = await fetch(`/launch/stop?package_name=${encodeURIComponent(pkg)}&launch_file=${encodeURIComponent(file)}`, { method: "POST" });
+            } catch {
+                alert("Network error: could not reach the server."); return;
+            }
+            if (!res.ok) { alert(`Failed to stop launch (${res.status}).`); return; }
+            row.className = "stopped";
+        }
+
+        function filterLaunchRows() {
+            const q = document.getElementById("launch_search").value.toLowerCase();
+            let visible = 0;
+            document.querySelectorAll("#launch_rows tr").forEach(row => {
+                const pkg  = row.querySelector(".lpkg")?.value.toLowerCase()  || "";
+                const file = row.querySelector(".lfile")?.value.toLowerCase() || "";
+                const show = pkg.includes(q) || file.includes(q);
+                row.style.display = show ? "" : "none";
+                if (show) visible++;
+            });
+            const total = document.querySelectorAll("#launch_rows tr").length;
+            document.getElementById("launch_count").textContent =
+                q ? `${visible} of ${total} launch files` : `${total} launch files`;
+        }
+
+        // ── Log streaming (shared by nodes and launches) ──
         let logSource = null;
         let term      = null;
         let fitAddon  = null;
 
-        function showLogs(row) {
-            const pkg  = row.querySelector(".pkg").value;
-            const node = row.querySelector(".node").value;
-            document.getElementById("log_title").textContent = `${pkg}  /  ${node}`;
+        function _openLogModal(title, streamUrl) {
+            document.getElementById("log_title").textContent = title;
             document.getElementById("log_modal").classList.add("open");
             document.getElementById("modal_backdrop").style.display = "block";
 
@@ -507,8 +634,27 @@
             fitAddon.fit();
 
             if (logSource) logSource.close();
-            logSource = new EventSource(`/logs/stream?package_name=${pkg}&node_name=${node}`);
+            logSource = new EventSource(streamUrl);
             logSource.onmessage = (e) => term.writeln(e.data);
+            logSource.onerror   = () => term.writeln("\r\n\x1b[31m[connection lost — logs paused]\x1b[0m");
+        }
+
+        function showLogs(row) {
+            const pkg  = row.querySelector(".pkg").value;
+            const node = row.querySelector(".node").value;
+            _openLogModal(
+                `${pkg}  /  ${node}`,
+                `/logs/stream?package_name=${encodeURIComponent(pkg)}&node_name=${encodeURIComponent(node)}`
+            );
+        }
+
+        function showLaunchLogs(row) {
+            const pkg  = row.querySelector(".lpkg").value;
+            const file = row.querySelector(".lfile").value;
+            _openLogModal(
+                `${pkg}  /  ${file}`,
+                `/launch/logs/stream?package_name=${encodeURIComponent(pkg)}&launch_file=${encodeURIComponent(file)}`
+            );
         }
 
         function closeLog() {
@@ -516,7 +662,98 @@
             document.getElementById("log_modal").classList.remove("open");
             document.getElementById("modal_backdrop").style.display = "none";
         }
+
+        // ── Parameter editor ──────────────────────────
+        let _paramNodeName = null;
+
+        async function showParams(row) {
+            if (!row.classList.contains("running")) {
+                alert("Start the node first to inspect its parameters.");
+                return;
+            }
+            const node = row.querySelector(".node").value;
+            _paramNodeName = node;
+
+            document.getElementById("param_modal_title").textContent = `/${node}  —  Parameters`;
+            const body = document.getElementById("param_modal_body");
+            body.innerHTML = `<span style="color:var(--text-muted);font-size:13px;">Loading…</span>`;
+            document.getElementById("param_modal").classList.add("open");
+            document.getElementById("param_modal_backdrop").style.display = "block";
+
+            let data;
+            try {
+                const res = await fetch(`/params?node_name=${encodeURIComponent(node)}`);
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                data = await res.json();
+            } catch (err) {
+                body.innerHTML = `<span style="color:var(--red);">Failed to fetch parameters: ${escHtml(String(err))}</span>`;
+                return;
+            }
+
+            const params = data.params;
+            const keys   = Object.keys(params).sort();
+            if (keys.length === 0) {
+                body.innerHTML = `<span style="color:var(--text-muted);font-size:13px;">No parameters found.</span>`;
+                return;
+            }
+
+            body.innerHTML = keys.map(k => {
+                const safeKey = escHtml(k);
+                const safeVal = escHtml(String(params[k]));
+                return `
+                <div class="param-row" data-param="${safeKey}">
+                    <span class="param-name" title="${safeKey}">${safeKey}</span>
+                    <input class="param-value-input" type="text" value="${safeVal}">
+                    <button class="btn btn-param-set btn-sm"
+                            onclick="applyParam(this.closest('.param-row'))">Set</button>
+                </div>`;
+            }).join("");
+        }
+
+        async function applyParam(row) {
+            const param = row.dataset.param;
+            const input = row.querySelector(".param-value-input");
+            const value = input.value;
+            const btn   = row.querySelector("button");
+
+            btn.disabled = true;
+            btn.textContent = "…";
+
+            let ok;
+            try {
+                const res = await fetch(
+                    `/params/set?node_name=${encodeURIComponent(_paramNodeName)}&param=${encodeURIComponent(param)}&value=${encodeURIComponent(value)}`,
+                    { method: "POST" }
+                );
+                ok = res.ok;
+            } catch { ok = false; }
+
+            btn.disabled = false;
+            if (ok) {
+                btn.textContent = "✓";
+                input.style.borderColor = "var(--green)";
+                setTimeout(() => { btn.textContent = "Set"; input.style.borderColor = ""; }, 1500);
+            } else {
+                btn.textContent = "Set";
+                input.style.borderColor = "var(--red)";
+                setTimeout(() => { input.style.borderColor = ""; }, 1500);
+                alert(`Failed to set "${param}".`);
+            }
+        }
+
+        function closeParams() {
+            document.getElementById("param_modal").classList.remove("open");
+            document.getElementById("param_modal_backdrop").style.display = "none";
+            _paramNodeName = null;
+        }
+
+        // ── Init ──────────────────────────────────────
         renderRecentPaths();
+        initBrowseButton();
+
+        window.addEventListener("beforeunload", () => {
+            if (logSource) logSource.close();
+        });
     </script>
 </body>
 </html>

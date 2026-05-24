@@ -25,7 +25,21 @@ ROSMAN runs a local web server on your machine. You open it in your browser, you
 
 ---
 
-## Installation
+## Quick Start (Docker — no ROS2 install needed)
+
+The Docker image ships with ROS2 Jazzy and the official demo nodes so you can try ROSMAN immediately without a robot or a local ROS2 installation.
+
+```bash
+git clone https://github.com/cmodi306/rosman_app.git
+cd rosman_app
+docker compose up --build
+```
+
+Open `http://localhost:8000`, enter `/opt/ros/jazzy/setup.bash` as the workspace path, and click **Source**. You'll see packages like `demo_nodes_py` and `demo_nodes_cpp` — pick a node such as `talker` and hit **Start** to see live logs streaming in the UI.
+
+---
+
+## Installation (local ROS2)
 
 ```bash
 git clone https://github.com/cmodi306/rosman_app.git
@@ -45,18 +59,22 @@ pip install -r requirements.txt
 
 2. Open your browser and go to `http://localhost:8000`
 
-3. Click **Browse** to select your ROS2 workspace setup file (e.g. `install/setup.bash`)
+3. Enter the absolute path to your ROS2 workspace setup file (e.g. `install/setup.bash`) and click **Source**. You can also use **Browse** to pick the file via a dialog.
 
-4. Pick a package and node, then hit **Start**. Logs will stream live in the UI.
+4. Pick a package and node, then hit **▶ Start**. Logs will stream live via the **≡ Logs** button.
 
-5. Click **Stop** to kill a running node. All nodes are automatically stopped when the server shuts down.
+5. Click **■ Stop** to kill a running node. All nodes are automatically stopped when the server shuts down.
+
+6. Switch to the **Launch Files** tab to start/stop full `.launch.py` / `.launch.xml` files — same start, stop, and live log streaming as individual nodes.
+
+7. Click **⚙ Params** on any running node to open the parameter editor — lists all parameters with their current values and lets you set them live without restarting the node.
 
 ---
 
 ## Future ToDOs
 
-- [ ] Launch file support
-- [ ] Parameter editing via UI
+- [x] Launch file support
+- [x] Parameter editing via UI
 
 ---
 
